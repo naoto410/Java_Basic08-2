@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>TodoApp</title>
+	</head>
+	<body>
+		<h1>Todo List</h1>
+    <form action="/Edit" th:object="${task}">
+		<input type="hidden" th:field="*{id}" />
+		<span>タイトル</span>
+        <input type="text" id="title" th:field="*{title}" required/>
+		<span>詳細</span>
+        <input type="text" id="description" th:field="*{description}"/>
+        <button type="submit">編集完了</button>
+    </form>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/style.css}">
+<title>TodoApp</title>
+</head>
+<body>
+	<h1>Todo List</h1>
+	<table border="1">
+		<tr>
+			<th class="w20">作成日時</th>
+			<th class="w50">やること</th>
+			<th class="w10">状態</th>
+			<th class="w10"></th>
+			<th class="w10"></th>
+		<tr th:each="task : ${tasks}">
+			<td th:text="${task.createdAt}" class="w20"></td>
+			<td th:text="${task.title}" class="w50"></td>
+			<td class="w10">
+				<a th:href="@{/Toggle/{id}(id=${task.id})}" th:text="${task.completed ? '完了' : '未完了'}"></a>
+			</td>
+			<td class="w10">
+				<a th:href="@{/Edit/{id}(id=${task.id})}">編集</a>
+			</td>
+			<td class="w10">
+				<a th:href="@{/Delete/{id}(id=${task.id})}" onclick="return confirm('このタスクを削除しますか？')">削除</a>
+			</td>
+		</tr>
+	</table>
+	<form action="/New">
+		<button type="submit" class="mt20">新規作成</button>
+	</form>
+</body>
+</html>
